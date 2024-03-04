@@ -1,52 +1,68 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+</head>
+<body>
+    <div id="screen">
+    <div id="top">
+        <img id="logo" src="{{ asset('image/logo.svg') }}" alt="logo">
+        <h1 class="heading">Register</h1><br><br>
+        <p>Create an account in a second, just like snapping your finger!</p>
+    </div><br><br><br><br>
+    
+    <form id="form" action="{{ route('register') }}" method="POST">
         @csrf
-
-        <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <label for="">Name</label><br><br>
+            <input oninput="validateName()" id="name" class="input" name="name" type="text" placeholder="Please enter your name..." value="{{ old('name') }}">
+            <p id="error-name" class="error-message"></p>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div>
+            <label for="">Email</label><br><br>
+            <input oninput="validateEmail()" type="email" id="email" name="email" class="input" placeholder="Please enter your email address..." value="{{ old('email') }}">
+            <p id="error-email" class="error-message"></p>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div>
+            <label for="">Address</label><br><br>
+            <input oninput="validateAlamat()" id="alamat" class="input" name="address" rows="5" placeholder="Please enter your address..." value="{{ old('address') }}">
+            <p id="error-alamat" class="error-message"></p>
+        </div>
+        
+        <div>
+            <label for="">Phone Number</label><br><br>
+            <input oninput="validateNumber()" id="number" class="input" name="phone_number" type="text" name="telp" placeholder="Please enter your phone number..." value="{{ old('phone_number') }}">
+            <p id="error-number" class="error-message"></p>
+            <br>
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div>
+            <label for="">Day of Birth</label><br><br>
+            <input oninput="validateBday()" type="date" class="input" name="birth_date" id="bday" value="{{ old('birth_date') }}">
+            <p id="error-bday" class="error-message"></p>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        <div>
+            <label for="">Password</label><br><br>
+            <input oninput="validatePassword()" class="input" type="password" name="password" id="password" placeholder="Please enter your password..." value="{{ old('password') }}">
+            <p id="error-password" class="error-message"></p>
+        </div><br><br>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        <button id="send-btn" class="heading" type="submit">Register</button>
+        
+    </form><br><br>
+
+    <div id="bottom">
+        <p>You already have an account?</p>
+        <a href="/login">Login here</a>
+    </div>
+</div>
+
+    <script src="{{ asset('js/register.js') }}"></script>
+</body>
+</html>
