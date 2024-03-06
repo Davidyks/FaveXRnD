@@ -19,11 +19,6 @@ function validateEmail() {
   let inputEmail = document.querySelector("#email");
   let valueEmail = inputEmail.value;
   let errorEmail = document.querySelector("#error-email");
-  $.post('/api/check-email', { email : valueEmail }, function (response) {
-    if (response.exists) {
-        errorEmail.innerHTML = "Email has been taken.";
-    }
-});
   if (valueEmail == "") {
   errorEmail.innerHTML = "Email cannot be empty!";
   inputEmail.style.borderBottom = "2px solid red";
@@ -33,7 +28,7 @@ function validateEmail() {
   errorEmail.innerHTML = "Email must contain '@gmail.com'!";
   inputEmail.style.borderBottom = "2px solid red";
   return false;
-  } else {
+  }else {
   errorEmail.innerHTML = "";
   inputEmail.style.borderBottom = "2px solid #392A2A";
   return true;
@@ -44,7 +39,6 @@ function validateAlamat() {
   let inputAlamat = document.querySelector("#alamat");
   let valueAlamat = inputAlamat.value;
   let errorAlamat = document.querySelector("#error-alamat");
-  console.log(valueAlamat);
 
   if (valueAlamat === "") {
   errorAlamat.innerHTML = "Address cannot be empty!";
@@ -91,13 +85,13 @@ function validateBday(){
   let inputBday = document.querySelector("#bday");
   let valueBday = inputBday.value;
   let errorBday = document.querySelector("#error-bday");
-
   if (valueBday == "") {
       errorBday.innerHTML = "Birthday cannot be empty!";
       inputBday.style.borderBottom = "2px solid red";
       inputBday.placeholder = "";
       return false;
-  } else {
+  }
+  else {
       errorBday.innerHTML = "";
       inputBday.style.borderBottom = "2px solid #3F92A2A";
       return true;
@@ -140,7 +134,6 @@ function shakeElement() {
 let sendBtn = document.querySelector("#send-btn");
 sendBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  let errorEmail = document.querySelector("#error-email");
   let form = document.querySelector("#form");
   let isNameValid = validateName();
   let isEmailValid = validateEmail();
@@ -148,9 +141,7 @@ sendBtn.addEventListener("click", function (e) {
   let isNumberValid = validateNumber();
   let isBdayValid = validateBday();
   let isPasswordValid = validatePassword();
-  let emailErrorMessage = errorEmail ? errorEmail.textContent : "";
-
-  if (isNameValid&&isEmailValid&&isAlamatValid&&isNumberValid&&isBdayValid&&isPasswordValid&&emailErrorMessage==="") {
+  if (isNameValid&&isEmailValid&&isAlamatValid&&isNumberValid&&isBdayValid&&isPasswordValid) {
       console.log("submit", form)
       form.submit();
   }else{
