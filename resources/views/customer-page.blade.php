@@ -6,7 +6,6 @@
     <title>Cart</title>
     <link rel="stylesheet" href="{{ asset('css/customer-page.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Archivo' rel='stylesheet'>
-    <script src="{{ asset('js/customer.js') }}"></script>
 </head>
 <body>
     <nav>
