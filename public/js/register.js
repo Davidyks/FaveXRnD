@@ -4,7 +4,7 @@ function validateName(){
   let errorName = document.querySelector("#error-name");
 
   if (valueName == "") {
-      errorName.innerHTML = "Name cannot be empty!";
+      errorName.innerHTML = "Name must be filled.";
       inputName.style.borderBottom = "2px solid red";
       inputName.placeholder = "";
       return false;
@@ -20,12 +20,12 @@ function validateEmail() {
   let valueEmail = inputEmail.value;
   let errorEmail = document.querySelector("#error-email");
   if (valueEmail == "") {
-  errorEmail.innerHTML = "Email cannot be empty!";
+  errorEmail.innerHTML = "Email must be filled.";
   inputEmail.style.borderBottom = "2px solid red";
   inputEmail.placeholder = "";
   return false;
   } else if (!valueEmail.endsWith("@gmail.com") || !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(valueEmail))) {
-  errorEmail.innerHTML = "Email must contain '@gmail.com'!";
+  errorEmail.innerHTML = "Email must be valid and end with @gmail.com.";
   inputEmail.style.borderBottom = "2px solid red";
   return false;
   }else {
@@ -41,7 +41,7 @@ function validateAlamat() {
   let errorAlamat = document.querySelector("#error-alamat");
 
   if (valueAlamat === "") {
-  errorAlamat.innerHTML = "Address cannot be empty!";
+  errorAlamat.innerHTML = "Address must be filled.";
   inputAlamat.style.border = "2px solid red";
   inputAlamat.placeholder = "";
   return false;
@@ -58,20 +58,20 @@ function validateNumber() {
   let errorNumber = document.querySelector("#error-number");
 
   if (valueNumber === "") {
-  errorNumber.innerHTML = "Number cannot be empty!";
+  errorNumber.innerHTML = "Phone number must be filled.";
   inputNumber.style.borderBottom = "2px solid red";
   inputNumber.placeholder = "";
   return false;
   } else if (isNaN(valueNumber)) {
-  errorNumber.innerHTML = "Only numbers are allowed!";
+  errorNumber.innerHTML = "Only numbers are allowed.";
   inputNumber.style.borderBottom = "2px solid red";
   return false;
   } else if(valueNumber.length < 9 || valueNumber.length > 12){
-  errorNumber.innerHTML = "Number has to be between 9-12 digits!";
+  errorNumber.innerHTML = "Phone number must be between 9-12 digits.";
   inputNumber.style.borderBottom = "2px solid red";
   return false;
   } else if(valueNumber.substring(0,2) != "08"){
-  errorNumber.innerHTML = "Number has to start with 08!";
+  errorNumber.innerHTML = "Phone number must start with '08'.";
   inputNumber.style.borderBottom = "2px solid red";
   return false;
   } else {
@@ -86,7 +86,7 @@ function validateBday(){
   let valueBday = inputBday.value;
   let errorBday = document.querySelector("#error-bday");
   if (valueBday == "") {
-      errorBday.innerHTML = "Birthday cannot be empty!";
+      errorBday.innerHTML = "Birth date must be filled.";
       inputBday.style.borderBottom = "2px solid red";
       inputBday.placeholder = "";
       return false;
@@ -108,12 +108,16 @@ var hasUpperCase = /[A-Z]/.test(valuePassword);
 var hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(valuePassword);
 
 if (valuePassword == "") {
-errorPassword.innerHTML = "Password cannot be empty!";
+errorPassword.innerHTML = "Password must be filled.";
 inputPassword.style.borderBottom = "2px solid red";
 inputPassword.placeholder = "";
 return false;
-} else if(valuePassword.length < 8 || !hasLowerCase || !hasUpperCase || !hasSpecialChar){
-errorPassword.innerHTML = "Password must be at least 8 characters long and include at least one lowercase character, one uppercase character, and one special character!";
+} else if(valuePassword.length < 8){
+errorPassword.innerHTML = "Password must be at least 8 characters long.";
+inputPassword.style.borderBottom = "2px solid red";
+return false;
+}else if(!hasLowerCase || !hasUpperCase || !hasSpecialChar){
+errorPassword.innerHTML = "Password must contain at least one lowercase character, one uppercase character, and one special character.";
 inputPassword.style.borderBottom = "2px solid red";
 return false;
 } else {
