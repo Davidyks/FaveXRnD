@@ -24,7 +24,7 @@ function validateEmail() {
   inputEmail.style.borderBottom = "2px solid red";
   inputEmail.placeholder = "";
   return false;
-  } else if (!valueEmail.endsWith("@gmail.com")) {
+  } else if (!valueEmail.endsWith("@gmail.com") || !(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(valueEmail))) {
   errorEmail.innerHTML = "Email must contain '@gmail.com'!";
   inputEmail.style.borderBottom = "2px solid red";
   return false;
