@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link rel="stylesheet" href="{{ asset('css/customer-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cart-page.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Archivo' rel='stylesheet'>
 </head>
 <body>
@@ -29,7 +29,7 @@
     <div class="mid">
         <div class="box">
             <input type="checkbox" class="item-checkbox">
-            <img src="{{ asset('image/demo-product.png') }}" alt="Product 1" class="product-image">
+            <img src="{{ asset('image/demo-image.png') }}" alt="Product 1" class="product-image">
             <div class="product-details">
                 <h3 class="product-name">High Collar Wool Sweater</h3>
                 <p class="product-description">Sweater berbahan lembut dan premium dari katun original asli...Sweater berbahan l</p>
@@ -44,7 +44,7 @@
         </div>
         <div class="box">
             <input type="checkbox" class="item-checkbox">
-            <img src="{{ asset('image/demo-product.png') }}" alt="Product 1" class="product-image">
+            <img src="{{ asset('image/demo-image.png') }}" alt="Product 1" class="product-image">
             <div class="product-details">
                 <h3 class="product-name">High Collar Wool Sweater</h3>
                 <p class="product-description">Swe</p>
@@ -59,7 +59,7 @@
         </div>
         <div class="box">
             <input type="checkbox" class="item-checkbox">  
-            <img src="{{ asset('image/demo-product.png') }}" alt="Product 1" class="product-image">
+            <img src="{{ asset('image/demo-image.png') }}" alt="Product 1" class="product-image">
             <div class="product-details">
                 <h3 class="product-name">High Collar Wool Sweater</h3>
                 <p class="product-description">Swe</p>
@@ -85,6 +85,6 @@
             </a>
         </div>
     </div>
-    <script src="{{ asset('js/customer-page.js') }}"></script>
+    <script src="{{ asset('js/cart-page.js') }}"></script>
 </body>
 </html>

@@ -31,15 +31,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/customer', function(){
-    return view('customer-page');
+Route::get('/cart-page', function(){
+    return view('cart-page');
 });
 
-Route::get('/admin-panel', [AdminController::class, 'goToAdminPanel'])->middleware('auth', 'role:admin')->name('admin-panel');
+Route::get('/admin-panel', [AdminController::class, 'goToAdminPanel'])->middleware('auth', 'role:admin');
 
-Route::patch('/update-{id}', [AdminController::class, 'update']);
+Route::post('/store-product', [AdminController::class, 'store']);
 
-Route::get('/delete-{id}', [AdminController::class, 'delete']);
+Route::patch('/update-product-{id}', [AdminController::class, 'update']);
+
+Route::delete('/delete-product-{id}', [AdminController::class, 'delete']);
 
 
 

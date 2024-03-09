@@ -79,33 +79,32 @@ const showFormCreate = () => {
   try {
       const createForm = 
       `
-          <form method="POST" action="/add" enctype="multipart/form-data">
-              @csrf
+          <form method="POST" action="/store-product" enctype="multipart/form-data">
               <h1> Tambah Produk </h1>
 
               <div class="form-input-field">
                   <label for="input-name"> Nama: </label>
-                  <input id="input-name" required/>
+                  <input name="name" id="input-name" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-price"> Harga (Rp): </label>
-                  <input id="input-price" type="number" required/>
+                  <input name="price" id="input-price" type="number" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-stock"> Stok: </label>
-                  <input id="input-stock" type="number" required/>
+                  <input name="stock" id="input-stock" type="number" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-description"> Deskripsi: </label>
-                  <textarea id="input-description"> </textarea>
+                  <textarea name="description" id="input-description"> </textarea>
               </div>                
 
               <div class="form-input-field">
                   <label for="input-image"> Gambar: </label>
-                  <input id="input-image" type="file" required/>
+                  <input name="picture" id="input-image" type="file" required/>
               </div>
 
               <div class="form-button-container">
@@ -143,33 +142,32 @@ const showFormUpdate = (product) => {
   try {
       const updateForm = 
       `
-          <form method="POST" action="/update-${product.id}">
-            @csrf
+          <form method="POST" action="/update-product-${product.id}" enctype="multipart/form-data">
               <h1> Update Data Produk </h1>
 
               <div class="form-input-field">
                   <label for="input-name"> Nama: </label>
-                  <input id="input-name" value="${product.name}" required/>
+                  <input name="name" id="input-name" value="${product.name}" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-price"> Harga (Rp): </label>
-                  <input id="input-price" type="number" value="${String(product.price)}" required/>
+                  <input name="price" id="input-price" type="number" value="${String(product.price)}" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-stock"> Stok: </label>
-                  <input id="input-stock" type="number" value="${String(product.stock)}" required/>
+                  <input name="stock" id="input-stock" type="number" value="${String(product.stock)}" required/>
               </div>
 
               <div class="form-input-field">
                   <label for="input-description"> Deskripsi: </label>
-                  <textarea id="input-description">  ${product.description} </textarea>
+                  <textarea name="description" id="input-description">  ${product.description} </textarea>
               </div>                
 
               <div class="form-input-field">
                   <label for="input-image"> Gambar: </label>
-                  <input id="input-image" type="file" required/>
+                  <input name="picture" id="input-image" type="file" required/>
               </div>
 
               <div class="form-button-container">
@@ -206,14 +204,14 @@ const showFormUpdate = (product) => {
 const showFormDelete = (id, productName) => {
   try {
       if (window.confirm(`Are you sure want to delete "${productName}"?`)) {
-          window.location.href = `/delete-${id}`;
+          window.location.href = `/delete-product-${id}`;
+          window.alert("Delete success!");
       }        
   }
   catch (error) {
       window.alert("System error");
   }
   finally {
-      window.alert("Delete success!");
       window.location.reload();
   }
 }

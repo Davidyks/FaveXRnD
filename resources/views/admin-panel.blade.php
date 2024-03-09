@@ -22,9 +22,12 @@
                 />
                 <p> Admin </p>               
             </summary>
-            <button>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+            <button type="submit">
                 Logout
-            </button>            
+            </button>        
+        </form>    
         </details>
     </header>
 
