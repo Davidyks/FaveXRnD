@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 9, 2)->default(0);
             $table->integer('stock');
-            $table->string('category')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
