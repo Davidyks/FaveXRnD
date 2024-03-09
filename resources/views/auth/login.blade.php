@@ -16,12 +16,12 @@
       @csrf
         <div>
             <label for="">Email</label><br><br>
-            <input name="email" type="email" id="email" class="input" placeholder="Please enter your email address..." required autofocus autocomplete="username">
+            <input name="email" type="text" id="email" class="input" placeholder="Please enter your email address..." autofocus autocomplete="username">
         </div><br>
 
         <div>
             <label for="">Password</label><br><br>
-            <input name="password" class="input" type="password" id="password" placeholder="Please enter your password..."  required autofocus autocomplete="current-password">
+            <input name="password" class="input" type="password" id="password" placeholder="Please enter your password..." autofocus autocomplete="current-password">
         </div><br>
 
         @if($errors->any())
@@ -37,6 +37,6 @@
         <p>You don't have an account?</p>
         <a href="/register">Register here</a>
     </div>
-    
+
 </body>
 </html>
