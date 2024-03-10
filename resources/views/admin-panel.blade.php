@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="AdminPanel.css"/>
     <link rel="stylesheet" href="{{ asset('css/admin-panel.css') }}">
     <title>XYZ E-Commerce</title>
 </head>
@@ -53,6 +52,7 @@
     <section id="popup-form">
         <!-- Rendered using JavaScript -->
     </section>
+
 
     <script src="{{ asset('js/admin-panel.js') }}"></script>
 </body>

@@ -74,37 +74,188 @@ const removeDropshadowEffect = () => {
   document.getElementById("popup-form").innerHTML = "";
 }
 
+//Validation
+function validateName(){
+  let inputName = document.querySelector("#input-name");
+  let valueName = inputName.value;
+  let errorName = document.querySelector("#error-name");
+
+  if (valueName == "") {
+      errorName.innerHTML = "Product’s name must be filled.";
+      inputName.style.borderBottom = "2px solid red";
+      inputName.placeholder = "";
+      return false;
+  } else {
+      errorName.innerHTML = "";
+      inputName.style.borderBottom = "2px solid #392A2A";
+      return true;
+  }
+}
+
+function validatePrice() {
+  let inputPrice = document.querySelector("#input-price");
+  let valuePrice = inputPrice.value;
+  let errorPrice = document.querySelector("#error-price");
+  
+  if (valuePrice === "") {
+  errorPrice.innerHTML = "Product's price must be filled.";
+  inputPrice.style.borderBottom = "2px solid red";
+  inputPrice.placeholder = "";
+  return false;
+  }else if (isNaN(valuePrice)) {
+    errorPrice.innerHTML = "Only numbers are allowed.";
+    inputPrice.style.borderBottom = "2px solid red";
+    return false;
+  }else if (valuePrice < 1) {
+  errorPrice.innerHTML = "Sorry, your price has to be at least Rp1";
+  inputPrice.style.borderBottom = "2px solid red";
+  return false;
+  } else if(valuePrice >= 1000000000){
+  errorPrice.innerHTML = "Sorry, your price has to be lower than Rp1.000.000.000";
+  inputPrice.style.borderBottom = "2px solid red";
+  return false;
+  } else {
+  errorPrice.innerHTML = "";
+  inputPrice.style.borderBottom = "2px solid #392A2A";
+  return true;
+  }
+}
+
+function validateStock(){
+  let inputStock = document.querySelector("#input-stock");
+  let valueStock = inputStock.value;
+  let errorStock = document.querySelector("#error-stock");
+
+  if (valueStock == "") {
+    errorStock.innerHTML = "Product's stock must be filled.";
+    inputStock.style.borderBottom = "2px solid red";
+    inputStock.placeholder = "";
+    return false;
+}else if (isNaN(valueStock)) {
+  errorStock.innerHTML = "Only numbers are allowed.";
+  inputStock.style.borderBottom = "2px solid red";
+  return false;
+}else if (valueStock < 0) {
+  errorStock.innerHTML = "Sorry, stock amount can’t be negative.";
+  inputStock.style.borderBottom = "2px solid red";
+  return false;
+}else if (valueStock == 0) {
+  errorStock.innerHTML = "Your product is non-active. Are you sure?";
+  inputStock.style.borderBottom = "2px solid red";
+  return false;
+}else if(!/^\d+$/.test(valueStock)){
+  errorStock.innerHTML = "Stock amount must be an integer.";
+  inputStock.style.borderBottom = "2px solid red";
+  return false;
+}else {
+    errorStock.innerHTML = "";
+    inputStock.style.borderBottom = "2px solid #392A2A";
+    return true;
+}
+}
+
+function validateDescription(){
+  let inputDescription = document.querySelector("#input-description");
+  let valueDescription = inputDescription.value;
+  let errorDescription = document.querySelector("#error-description");
+
+  if (valueDescription == "") {
+      errorDescription.innerHTML = "Product's description must be filled.";
+      inputDescription.style.borderBottom = "2px solid red";
+      inputDescription.placeholder = "";
+      return false;
+  } else {
+      errorDescription.innerHTML = "";
+      inputDescription.style.borderBottom = "2px solid #392A2A";
+      return true;
+  }
+}
+
+function validateImage(){
+  let inputImage = document.querySelector("#input-image");
+  let valueImage = inputImage.value;
+  let errorImage = document.querySelector("#error-image");
+  let format = /(\.jpg|\.jpeg|\.png)$/i; 
+
+  if (valueImage == "") {
+      errorImage.innerHTML = "Product's image must be attached.";
+      inputImage.style.borderBottom = "2px solid red";
+      inputImage.placeholder = "";
+      return false;
+  }else if(!format.exec(valueImage)){
+    errorImage.innerHTML = "Image's format must be .jpg/.jpeg/.png";
+    inputImage.style.borderBottom = "2px solid red";
+    inputImage.placeholder = "";
+    return false;
+  } else {
+      errorImage.innerHTML = "";
+      inputImage.style.borderBottom = "2px solid #392A2A";
+      return true;
+  }
+}
+
+function shakeElement() {
+  const element = document.getElementById('form');
+  element.classList.add('error-shake');
+  setTimeout(() => {
+    element.classList.remove('error-shake');
+  }, 300); 
+}
+
+function submitForm(){
+
+  let isNameValid = validateName();
+  let isPriceValid = validatePrice();
+  let isStockValid = validateStock();
+  let isDescriptionValid = validateDescription();
+  let isImageValid = validateImage();
+
+  if (isNameValid&&isPriceValid&&isStockValid&&isDescriptionValid&&isImageValid) {
+      return true;
+  }else{
+    shakeElement();
+    return false;
+  }
+}
+
+
 // FIXME: Change with real API
 const showFormCreate = () => {
   try {
       const createForm = 
       `
-          <form method="POST" action="/store-product" enctype="multipart/form-data">
+          <form id="form" onsubmit="return submitForm()" method="POST" action="/store-product" enctype="multipart/form-data">
+              
               <h1> Tambah Produk </h1>
 
               <div class="form-input-field">
                   <label for="input-name"> Nama: </label>
-                  <input name="name" id="input-name" required/>
+                  <input name="name" id="input-name" oninput="validateName()" required/>
+                  <p id="error-name" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-price"> Harga (Rp): </label>
-                  <input name="price" id="input-price" type="number" required/>
+                  <input name="price" id="input-price" type="number" oninput="validatePrice()" required/>
+                  <p id="error-price" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-stock"> Stok: </label>
-                  <input name="stock" id="input-stock" type="number" required/>
+                  <input name="stock" id="input-stock" type="number" oninput="validateStock()" required/>
+                  <p id="error-stock" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-description"> Deskripsi: </label>
-                  <textarea name="description" id="input-description"> </textarea>
+                  <textarea name="description" id="input-description" oninput="validateDescription()" > </textarea>
+                  <p id="error-description" class="error-message"></p>
               </div>                
 
               <div class="form-input-field">
                   <label for="input-image"> Gambar: </label>
-                  <input name="picture" id="input-image" type="file" required/>
+                  <input name="picture" id="input-image" type="file" oninput="validateImage()" required/>
+                  <p id="error-image" class="error-message"></p>
               </div>
 
               <div class="form-button-container">
@@ -142,32 +293,38 @@ const showFormUpdate = (product) => {
   try {
       const updateForm = 
       `
-          <form method="POST" action="/update-product-${product.id}" enctype="multipart/form-data">
+          <form id="form" onsubmit="return submitForm()" method="POST" action="/update-product-${product.id}" enctype="multipart/form-data">
+            
               <h1> Update Data Produk </h1>
 
               <div class="form-input-field">
                   <label for="input-name"> Nama: </label>
-                  <input name="name" id="input-name" value="${product.name}" required/>
+                  <input name="name" id="input-name" value="${product.name}" oninput="validateName()" required/>
+                  <p id="error-name" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-price"> Harga (Rp): </label>
-                  <input name="price" id="input-price" type="number" value="${String(product.price)}" required/>
+                  <input name="price" id="input-price" type="number" value="${String(product.price)}" oninput="validatePrice()" required/>
+                  <p id="error-price" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-stock"> Stok: </label>
-                  <input name="stock" id="input-stock" type="number" value="${String(product.stock)}" required/>
+                  <input name="stock" id="input-stock" type="number" value="${String(product.stock)}" oninput="validateStock()" required/>
+                  <p id="error-stock" class="error-message"></p>
               </div>
 
               <div class="form-input-field">
                   <label for="input-description"> Deskripsi: </label>
-                  <textarea name="description" id="input-description">  ${product.description} </textarea>
+                  <textarea name="description" id="input-description" oninput="validateDescription()" >  ${product.description} </textarea>
+                  <p id="error-description" class="error-message"></p>
               </div>                
 
               <div class="form-input-field">
                   <label for="input-image"> Gambar: </label>
-                  <input name="picture" id="input-image" type="file" required/>
+                  <input name="picture" id="input-image" type="file" oninput="validateImage()" required/>
+                  <p id="error-image" class="error-message"></p>
               </div>
 
               <div class="form-button-container">
@@ -204,7 +361,7 @@ const showFormUpdate = (product) => {
 const showFormDelete = (id, productName) => {
   try {
       if (window.confirm(`Are you sure want to delete "${productName}"?`)) {
-          window.location.href = `/delete-product-${id}`;
+          window.location.href = `/delete-product-${id}`; 
           window.alert("Delete success!");
       }        
   }
