@@ -85,7 +85,7 @@ class AdminController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        // Storage::delete('public/' . $dataProduct->picture);
+        // Storage::delete('/public/' . $dataProduct->picture);
 
         $dataProduct->update([
             'name' => $request->name,
