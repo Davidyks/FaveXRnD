@@ -72,7 +72,7 @@ const showFormCreate = () => {
     try {
         const createForm = 
         `
-            <form id = "form-create">
+            <form id = "form-create" >
                 <h1> Tambah Produk </h1>
 
                 <div class="form-input-field">
@@ -120,46 +120,51 @@ const showFormCreate = () => {
         document.getElementById("popup-form").innerHTML = createForm;
         createDropshadowEffect();
 
+        // Ganti event listener dari oninput menjadi onchange
+        document.getElementById("input-image").addEventListener("change", () => {
+            isImageValid();
+        });
+
+        // Event listener untuk form submission
         document.getElementById("popup-form").addEventListener("submit", async (event) => {
             event.preventDefault();
             const isValid = isFormValid();
 
             if (isValid) {
+                const formData = new FormData();
+                formData.append('name', document.getElementById("input-name").value);
+                formData.append('price', document.getElementById("input-price").value);
+                formData.append('stock', document.getElementById("input-stock").value);
+                formData.append('description', document.getElementById("input-description").value);
+                formData.append('picture', document.getElementById("input-image").files[0]); // Ambil file pertama
+
                 const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 const response = await fetch("/store-product", {
                     headers: {
-                        "Content-Type": "application/json",
                         "X-CSRF-Token": token,
                     },
                     method: "POST",
-                    body: JSON.stringify({
-                        name: document.getElementById("input-name").value,
-                        price: document.getElementById("input-price").value,
-                        stock: document.getElementById("input-stock").value,
-                        description: document.getElementById("input-description").value,
-                        picture: document.getElementById("input-image").files,
-                    }),
+                    body: formData,
                 });
 
-                if (response.status != 201) {
+                if (response.status !== 201) {
                     window.alert("Add product failed!");
+                    console.log(formData);
                 }
 
-                window.location.reload();                
+                window.location.reload();
             }
         });
-        
-    }
-    catch (error) {
+    } catch (error) {
         window.alert("System error");
     }
-}
+};
 
 const showFormUpdate = (product) => {
     try {
         const updateForm = 
         `
-            <form id="form-edit">
+            <form id="form-edit" >
                 <h1> Update Data Produk </h1>
 
                 <div class="form-input-field">
@@ -384,7 +389,7 @@ const Products = async () => {
                         <td>
                             <div class="table-data-product-name">
                                 <img
-                                    src="image/${product.picture}"
+                                    src="storage/${product.picture}"
                                     alt="Image of ${product.name}"
                                 />
                                 <div>
