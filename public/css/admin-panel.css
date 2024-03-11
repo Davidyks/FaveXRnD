@@ -151,7 +151,7 @@ tr td:last-child {
 
 #popup-form {
   position: fixed;
-  top: 15%;  
+  top: 10%;  
   width: 100%;
 }
 
@@ -177,7 +177,7 @@ form h1 span {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .form-input-field input {
@@ -207,8 +207,13 @@ form h1 span {
   background-color: red;
 }
 
-.error-message{
+.error-message {
   color: red;
+  display: none;
+  font-size: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
 }
 
 .error-shake {
