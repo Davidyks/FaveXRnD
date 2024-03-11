@@ -29,7 +29,7 @@ class AdminController extends Controller
             'price' => ['required'],
             'stock' => ['required'],
             'description' => ['required'],
-            // 'picture' => ['required', 'image'],
+            'picture' => ['required', 'image'],
         ]);
 
         $dataProduct = Product::create([
@@ -40,34 +40,34 @@ class AdminController extends Controller
             'picture' => '', // Set initially empty, will be updated later
         ]);
 
-        // if ($request->hasFile('picture')) {
-        //     $picture_path = $request->file('picture');
-        //     $pictureName = $dataProduct->id . '_' . $picture_path->getClientOriginalName();
-        //     $picture_path->storeAs('public/ProductImage', $pictureName);
-        //     $dataProduct->picture = 'ProductImage/' . $pictureName;
-        //     $dataProduct->save();
-        // }
+
+            $picture_path = $request->file('picture');
+            $pictureName = $dataProduct->id . '_' . $picture_path->getClientOriginalName();
+            $picture_path->storeAs('public/ProductImage', $pictureName);
+            $dataProduct->picture = 'ProductImage/' . $pictureName;
+            $dataProduct->save();
+        
 
         $dataProduct->save();
 
         return response()->json($dataProduct, 201);
     
-        // $dataProduct = Product::create([
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'stock' => $request->stock,
-        //     'description' => $request->description,
-        //     'picture' => $request->picture,
-        // ]);
-        // //store image
-        // $picture_path = $request->file('picture');
-        // $pictureName = $dataProduct->id . $picture_path->getClientOriginalName();
-        // $picture_path->storeAs('public/ProductImage', $pictureName);
-        // $dataProduct->picture = 'ProductImage/' . $pictureName;
-        // $dataProduct->save();
+        $dataProduct = Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'description' => $request->description,
+            'picture' => $request->picture,
+        ]);
+        //store image
+        $picture_path = $request->file('picture');
+        $pictureName = $dataProduct->id . $picture_path->getClientOriginalName();
+        $picture_path->storeAs('public/ProductImage', $pictureName);
+        $dataProduct->picture = 'ProductImage/' . $pictureName;
+        $dataProduct->save();
 
-        // return response()->json();
-        // return redirect('/admin-panel');
+        return response()->json();
+        return redirect('/admin-panel');
     }
 
     public function update(Request $request, $id){
@@ -76,7 +76,7 @@ class AdminController extends Controller
             'price' => ['required'],
             'stock' => ['required'],
             'description' => ['required'],
-            // 'picture' => ['required', 'image'],
+            'picture' => ['required', 'image'],
         ]);
 
         $dataProduct = Product::find($id);
@@ -85,21 +85,21 @@ class AdminController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        // Storage::delete('public/' . $dataProduct->picture);
+        Storage::delete('/public/' . $dataProduct->picture);
 
         $dataProduct->update([
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
             'description' => $request->description,
-            // 'picture' => $request->picture,
+            'picture' => $request->picture,
             'picture' => ''
         ]);
         //store image
-        // $picture_path = $request->file('picture');
-        // $pictureName = $id . $picture_path->getClientOriginalName();
-        // $picture_path->storeAs('/public/ProductImage', $pictureName);
-        // $dataProduct->picture = 'ProductImage/' . $pictureName;
+        $picture_path = $request->file('picture');
+        $pictureName = $id . $picture_path->getClientOriginalName();
+        $picture_path->storeAs('/public/ProductImage', $pictureName);
+        $dataProduct->picture = 'ProductImage/' . $pictureName;
 
         return response()->json();
     }
@@ -110,10 +110,9 @@ class AdminController extends Controller
         if (!$dataProduct) {
             return response()->json(['message' => 'Product not found'], 404);
         }
+
+        Storage::delete('/public/'.$dataProduct->picture);
         
-        // if($dataProduct){
-        //     Storage::delete('/public/'.$dataProduct->picture);
-        // }
         Product::destroy($id);
         return response()->json();
     }
