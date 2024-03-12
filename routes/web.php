@@ -37,11 +37,11 @@ Route::get('/cart-page', function(){
 
 Route::get('/admin-panel', [AdminController::class, 'goToAdminPanel'])->middleware('auth', 'role:admin');
 
-Route::post('/store-product', [AdminController::class, 'store']);
+Route::post('/admin-store-product', [AdminController::class, 'store']);
 
-Route::patch('/update-product-{id}', [AdminController::class, 'update']);
+Route::post('/admin-update-product-{id}', [AdminController::class, 'update']);
 
-Route::delete('/delete-product-{id}', [AdminController::class, 'delete']);
+Route::delete('/admin-delete-product-{id}', [AdminController::class, 'delete']);
 
 
 

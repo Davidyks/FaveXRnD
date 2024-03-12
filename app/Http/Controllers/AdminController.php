@@ -48,8 +48,6 @@ class AdminController extends Controller
             $dataProduct->save();
         }
 
-        $dataProduct->save();
-
         return response()->json($dataProduct, 201);
     
    
@@ -61,7 +59,7 @@ class AdminController extends Controller
             'price' => ['required'],
             'stock' => ['required'],
             'description' => ['required'],
-            // 'picture' => ['required', 'image'],
+            'picture' => ['required', 'image'],
         ]);
 
         $dataProduct = Product::find($id);
@@ -69,9 +67,9 @@ class AdminController extends Controller
         if (!$dataProduct) {
             return response()->json(['message' => 'Product not found'], 404);
         }
-        if($dataProduct->picture){
-            Storage::delete('/public/' . $dataProduct->picture);
-        }
+        
+        Storage::delete('/public/' . $dataProduct->picture);
+        
        
         $dataProduct->update([
             'name' => $request->name,
@@ -83,9 +81,10 @@ class AdminController extends Controller
         ]);
         //store image
         $picture_path = $request->file('picture');
-        $pictureName = $id . $picture_path->getClientOriginalName();
+        $pictureName = $id .'_'. $picture_path->getClientOriginalName();
         $picture_path->storeAs('/public/ProductImage', $pictureName);
         $dataProduct->picture = 'ProductImage/' . $pictureName;
+        $dataProduct->save();
 
         return response()->json();
     }
