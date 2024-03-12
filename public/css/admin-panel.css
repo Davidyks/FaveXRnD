@@ -209,8 +209,7 @@ form h1 span {
 
 .error-message {
   color: red;
-  display: none;
-  font-size: 8px;
+  font-size: 12px;
   margin-top: 0;
   margin-bottom: 0;
   font-weight: bold;
