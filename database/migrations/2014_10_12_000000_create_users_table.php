@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'customer'])->default('customer');
-            $table->decimal('e-money', 9, 2)->default(0)->nullable();
+            $table->decimal('e_money', 9, 2)->default(0)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

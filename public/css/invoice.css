@@ -1,0 +1,48 @@
+body, html {
+  background-color:#F9F1E9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #FFD5A5;
+  border: 2px solid #392A2A; /* Menambahkan border pada container */
+}
+
+.back-button {
+  font-size: 26px;
+}
+
+.back-button:hover {
+  background-color: #392A2A; /* Mengubah warna latar belakang saat dihover */
+  border-radius: 5px;
+  color: #FFD5A5; /* Mengubah warna teks saat dihover */
+}
+
+.top-up-button {
+  flex-grow: 1; 
+  text-align: center; 
+  font-size: 40px;
+}
+
+.history-page {
+  margin-top: 150px;
+  text-align: center; /* Mengatur teks dan konten ke tengah */
+}
+
+.history-page img {
+  display: block; /* Membuat gambar menjadi blok sehingga dapat diatur tata letaknya */
+  margin: 0 auto; /* Mengatur margin auto pada sisi kiri dan kanan untuk membuatnya berada di tengah */
+  height: 200px;
+  width: 200px;
+}
+
+.history-page h1 {
+  font-size: 40px;
+  font-weight: normal;
+}

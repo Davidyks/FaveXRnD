@@ -40,8 +40,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function product(): HasMany
+
+    public function cart(): HasMany
     {
-        return $this->HasMany(Product::class);
+        return $this->hasMany(Cart::class);
+    }
+
+    public function order(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

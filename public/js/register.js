@@ -117,7 +117,7 @@ errorPassword.innerHTML = "Password must be at least 8 characters long.";
 inputPassword.style.borderBottom = "2px solid red";
 return false;
 }else if(!hasLowerCase || !hasUpperCase || !hasSpecialChar){
-errorPassword.innerHTML = "Password must contain at least one lowercase character, one uppercase character, and one special character.";
+errorPassword.innerHTML = "Password must contain at least one lowercase character,<br>one uppercase character, and one special character.";
 inputPassword.style.borderBottom = "2px solid red";
 return false;
 } else {

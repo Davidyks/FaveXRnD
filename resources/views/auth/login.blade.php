@@ -14,6 +14,9 @@
     
     <form id="form" action="{{ route('login') }}" method="POST">
       @csrf
+      @if($errors->any())
+      <p class="error-message">Invalid login or password. Please try again.</p>
+     @endif
         <div>
             <label for="">Email</label><br><br>
             <input name="email" type="text" id="email" class="input" placeholder="Please enter your email address..." autofocus autocomplete="username">
@@ -22,12 +25,7 @@
         <div>
             <label for="">Password</label><br><br>
             <input name="password" class="input" type="password" id="password" placeholder="Please enter your password..." autofocus autocomplete="current-password">
-        </div><br>
-
-        @if($errors->any())
-            <p class="error-message">Invalid login or password. Please try again.</p>
-        @endif
-        <br>
+        </div><br><br>
 
         <button id="send-btn" class="heading" type="submit">Login</button>
         

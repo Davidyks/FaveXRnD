@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary: #F9F1E9;
+    --font: #392A2A;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--primary);
+}
+.men,
+.women,
+.text{
+    background-color: var(--primary);
+}
+
+/* LOADING PAGE */
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.loader.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeOut{
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ------------------------------- */
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: Archivo;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    background-color: var(--primary);
+}
+
+.logo{
+    cursor: pointer;
+    margin: 0 5% 0 2%;
+    /* padding-left: 250px;
+    padding-right: 270px; */
+}
+
+header nav a{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+header a{
+    color: var(--font);
+    font: var(--font);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all ease-in-out;
+    position: relative;
+    
+}
+
+.nav-container1 a:after,
+.nav-container2 a::after{
+    content: "";
+    position: absolute;
+    background-color: chocolate;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+a:hover:after{
+    width: 100%;
+}
+a:hover{
+    color: chocolate;
+}
+
+.nav-container1 a,
+.nav-container2 a{
+    padding: 0px 20px;
+    display: inline-block;
+    margin: 15px;
+}
+
+.left{
+    float: left;
+    padding: 5% 0 5% 0;
+    margin-right: -15%;
+}
+
+.right{
+    float: right;
+    padding: 5% 0 5% 0;
+    margin-left: -15%;
+}
+
+.intro{
+    margin-bottom: 3%;
+}
+
+.slogan{
+    font-family: Noto Serif;
+    font-size: 100px;
+    font-weight: 300;
+    padding: 80px 50px;
+    text-align: center;
+    color: var(--font);
+}
+
+.desc{
+    font-family: Archivo;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    padding: 10px 10px;
+    color: var(--font);
+}
+
+.arrow{
+    display: flex;
+    margin: 10% 50%;
+}
+.arrow2{
+    display: flex;
+    margin: 5% 50%;
+}
+
+.gender{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+    padding: 50px;
+}
+
+.women {
+    font-size: 40px;
+    width: 45%;
+    font-family: Noto Serif;
+    cursor: pointer;
+    margin-left: 5%;
+    border: 5px solid var(--font);
+    border-radius: 3px;
+    color: var(--font);
+    transition: 0.25s ease-in-out;
+}
+.women:hover{
+    color: var(--primary);
+    background-color: #392A2A;
+}
+.men {
+    font-size: 40px;
+    width: 45%;
+    font-family: Noto Serif;
+    cursor: pointer;
+    margin-right: 5%;
+    border: 5px solid var(--font);
+    border-radius: 3px;
+    color: var(--font);
+    transition: 0.25s ease-in-out;
+}
+.men:hover{
+    color: var(--primary);
+    background-color: #392A2A;
+}
+
+.types{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    border-style: solid;
+    border-color: var(--font);
+    border-width: 3px;
+    border-radius: 8px;
+    margin: 20px 50px 0px 50px;
+}
+
+.types button{
+    border: none;
+    width: 110px;
+    font-family: Archivo;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.types button:hover{
+    font-weight: 750;
+}
+
+button text{
+    padding: 2px 2px;
+}
+
+
+.sale{
+    padding: 20px 4px 20px 50px;
+    font-family: Noto Serif;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+.img{
+    width: 28px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.sale-container{
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.content{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+}
+
+.words{
+    font-family: Noto Serif;
+    font-size: 20px;
+    padding: 0px 50px 10px 50px;
+}
+
+.text2{
+    font-family: Archivo;
+    font-size: 16px;
+    font-weight: 500;
+}
+.price{
+    text-decoration: line-through;
+    font-family: Noto Serif;
+    font-weight: 400;
+}
+.diskon{
+    color: #CC2A06;
+    font-weight: 400;
+}
+.diskon2{
+    color: var(--font);
+    font-weight: 400;
+}
+.color{
+    width: 75px;
+    height: auto;
+    margin-top: 5px;
+}
+
+.imgSweat{
+    width: 390px;
+    height: auto;
+    padding: 10px 50px;
+}
+/* ------------------------------- */
+
+/* FOOTER */
+footer{
+    background-color: var(--font);
+}
+
+.logoFooter{
+    margin: 5% 5% 2% 5%;
+}
+
+.row{
+    color: var(--primary);
+    font-family: Noto Serif;
+    margin: 0 5% 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.slog{
+    font-size: 44px;
+    font-weight: 400;
+}
+.footer-col h4{
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+    font-size: 44px;
+    font-weight: 400;
+}
+.email a{
+    color: var(--primary);
+    font-family: archivo;
+}
+.num{
+    width: fit-content;
+    margin: 20px 0;
+}
+.info h3{
+    width: fit-content;
+    margin: 70px 0 100px 0;
+}
+.info{
+    font-family: archivo;
+    font-size: 16px;
+}
+.info a{
+    color: var(--primary);
+    font-family: archivo;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.i{
+    width: 30%;
+    padding: 0 40px 30px 10px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    
+}
+.i:hover{
+    filter: drop-shadow(5px 5px 20px gold);
+}
+
+.credit{
+    background-color: #FFD5A5;
+    color: #392A2A;
+    text-align: center;
+    font-family: Archivo;
+    font-size: 10px;
+    padding: 6px;
+}
+.credit h2{
+    font-weight: 500;
+    background-color: #FFD5A5;
+}
+.credit h2 span{
+    font-weight: 700;
+    background-color: #FFD5A5;
+}

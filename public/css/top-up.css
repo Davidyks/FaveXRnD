@@ -1,0 +1,307 @@
+body, html {
+  background-color: #FFD5A5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 0 auto;
+  border: 2px solid #392A2A; /* Menambahkan border pada container */
+}
+
+.back-button {
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #392A2A; /* Mengubah warna latar belakang saat dihover */
+  border-radius: 5px;
+  color: #FFD5A5; /* Mengubah warna teks saat dihover */
+}
+
+.top-up-button {
+  flex-grow: 1; 
+  text-align: center; 
+  font-size: 20px;
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.balance-box {
+  width: 500px;
+  height: 550px;
+  background-color: #F9F1E9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  border: solid 1px #392A2A;
+}
+
+.pass-box {
+  width: 500px;
+  height: 510px;
+  background-color: #392A2A;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* Mengatur tata letak konten dalam kolom */
+  padding: 20px;
+}
+
+.pass-box p {
+  margin-top: 5px;
+  margin-left: 10px;
+  color: white;
+  font-size: 44px;
+  margin-bottom: 5px; /* Menambahkan margin bawah antara teks dan info */
+}
+
+.pess-box {
+  color: #F9F1E9;
+  font-size: 14px;
+  margin-bottom: 10px; 
+  background-color: rgba(57, 42, 42, 0.5); /* Warna latar belakang transparan */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.pess-box a {
+  color: rgba(249, 241, 233, 0.6); /* Warna teks link */
+  text-decoration: none; /* Menghilangkan garis bawah */
+}
+
+.pess-box a:hover {
+  text-decoration: underline; /* Memberi garis bawah saat dihover */
+}
+
+.pess-box p {
+  color:  rgba(249, 241, 233, 0.6); /* Warna teks link */
+  text-decoration: none; /* Menghilangkan garis bawah */
+  font-size: 14px;
+  margin-left: 0px;
+}
+
+.threes-box {
+  background-color: #FFD5A5;
+  flex-grow: 1; /* Menggunakan flex-grow untuk memastikan mencakup sisa ruang */
+  display: flex;
+  flex-direction: column; /* Mengatur tata letak konten dalam kolom */
+}
+
+.second-box {
+  height: 125px;
+  border:1px solid #392A2A;
+}
+
+.third-box {
+  height: 125px;
+  border:1px solid #392A2A;
+}
+
+.fourth-box {
+  height: 125px;
+  border:1px solid #392A2A;
+}
+
+.second-box p{
+  font-size: 25px;
+  color: #392A2A;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.third-box p{
+  font-size: 25px;
+  color: #392A2A;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.fourth-box p{
+  font-size: 25px;
+  color: #392A2A;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.bullet {
+  color: #392A2A;
+  font-size: 25px;
+  margin-left: 5px;
+}
+
+.balance-box p {
+  display: flex; /* Mengubah tata letak paragraf agar elemen di dalamnya dapat diatur */
+  align-items: center; /* Mengatur elemen di dalam paragraf berada di tengah secara vertikal */
+}
+
+.toggle-visibility-container {
+  margin-left: 10px; /* Menyesuaikan jarak antara tombol dan teks "Rp" */
+}
+
+.toggle-visibility {
+  border-radius: 50%; /* Mengubah bentuk dari kotak menjadi oval */
+  background-color: #F9F1E9;
+  border: none;
+}
+
+.top-up-method {
+  color: #F9F1E9;
+  border: solid 1px #392A2A;
+  padding: 20px;
+  text-align: right;
+}
+
+.top-up {
+  font-size: 20px;
+  color: #F9F1E9;
+  background-color: #392A2A;
+}
+
+.top-up:hover {
+  color: #392A2A;
+  background-color: #FFD5A5; /* Change background color on hover */
+}
+
+.additional-box {
+  height: 800px;
+  display: flex;
+  justify-content: space-between; /* Mengatur jarak antara elemen-elemen di dalam .additional-box */
+  background-color: #FFD5A5;
+}
+
+.balance-box {
+  width: 30%; /* Mengurangi lebar balance-box agar ada ruang bagi elemen lain */
+  height: 698px;
+  background-color: #F9F1E9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-box {
+  width: 2500px;
+  margin-left: 70px;
+  margin-top: 5px;
+  font-size: 30px;
+}
+
+.bullat {
+  color:#F9F1E9;
+  font-size: 80px; /* Ubah ukuran font bullet */
+  margin-left: 5px;
+  display: block; /* Mengatur agar bulatan ditampilkan dalam satu baris vertikal */
+  margin-top: 1px; /* Atau ubah menjadi nilai yang lebih kecil sesuai kebutuhan */
+  transition: transform 0.3s ease;
+}
+
+.bullat:hover {
+  transform: translateX(10px) scale(1.2); /* Mengubah ukuran bulatan saat dihover */
+}
+
+.amount-box img{
+  width : 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.method-text {
+  vertical-align: middle; /* Memposisikan teks secara vertikal di tengah */
+  margin-left: 10px; /* Menambahkan jarak antara gambar dan teks */
+}
+
+.cuan-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFD5A5;
+  margin-right: 40px;
+}
+
+.cuan-box p{
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center; /* Mengatur teks di tengah */
+  font-size: 18px;
+}
+
+.cuan-box .box {
+  width: calc(19.33% - 10px);
+  height: 80px;
+  padding: 10px;
+  background-color: #F9F1E9;
+  border: 1px solid #392A2A;
+  border-radius: 5px;
+}
+
+.cuan-box img {
+  width: 50px;
+  height: 50px;
+  margin-left: 50px;
+}
+
+.cuan2-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFD5A5;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.cuan2-box p{
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center; /* Mengatur teks di tengah */
+  font-size: 18px;
+}
+
+.cuan2-box .box {
+  width: calc(19.33% - 10px);
+  height: 80px;
+  padding: 10px;
+  background-color: #F9F1E9;
+  border: 1px solid #392A2A;
+  border-radius: 5px;
+}
+
+.cuan2-box img {
+  width: 50px;
+  height: 50px;
+  margin-left: 50px;
+}
+
+.type-box input[type="text"] {
+  flex: 1;
+  margin-top: 20px;
+  width: 815px; /* Make the input box take up 100% of available space */
+  padding: 10px; /* Add padding to make the input box more visible */
+  text-align: center;
+  border-radius: 5px;
+}
+
+.end-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.end1-box h1{
+  font-size: 20px;
+}
+
+.end2-box h2{
+  text-align: right;
+  font-size: 20px;
+  margin-right: 45px;
+  margin-bottom: 100px;
+}
+
+.box:hover {
+  background-color: rgba(249, 241, 233, 0.6); /* Mengubah warna latar belakang saat dihover */
+  color: #392A2A; /* Mengubah warna teks saat dihover */
+  transition: background-color 0.6s ease, color 0.6s ease; /* Efek transisi untuk perubahan warna */
+}
